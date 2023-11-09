@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+@import "mixin", "var";
+
+#wrap {
+  div {
+    font-family: $en-font;
+    font-size: 15rem;
+    @include absolute(30%, 50%);
+  }
+}
