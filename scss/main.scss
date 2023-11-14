@@ -3,9 +3,123 @@
 @import "mixin", "var";
 
 #wrap {
-  div {
+  max-width: 1920px;
+  margin: 0 auto;
+  &.no-scroll {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  background-color: #111;
+  color: #fff;
+}
+
+nav {
+  background-color: #111;
+  .nav_wrap {
+    a {
+      color: #fff;
+    }
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    @include flexbox(space-between, center);
+  }
+  a {
     font-family: $en-font;
-    font-size: 15rem;
-    @include absolute(30%, 50%);
+  }
+  .pc_ul {
+    width: 45%;
+    @include flexbox(space-between, center);
+    li {
+      font-weight: 100;
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+#main {
+  position: relative;
+  .main_greeting {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    // transform: translateY(-50%);
+    font-family: $en-font;
+    font-weight: 600;
+    font-size: 8rem;
+    color: #fff;
+    text-transform: uppercase;
+
+    span {
+      display: inline-block;
+      transition: transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
+      transform: translate(20%, 100%);
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.03em;
+
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateY(-40%);
+        transition: transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
+      }
+
+      &.row {
+        overflow: hidden;
+        line-height: 1;
+        display: block;
+        transform: none;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    .animate {
+      transform: translate(0, 0);
+
+      &:before {
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  .scollDown {
+    position: absolute;
+    bottom: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+#project {
+  .project_list {
+    width: 95%;
+    @include center($center01, 0);
+
+    a {
+      display: inline-block;
+      color: #fff;
+      font-size: 4rem;
+      font-family: $en-font;
+      font-weight: 400;
+      height: 15rem;
+      line-height: 15rem;
+    }
   }
 }
