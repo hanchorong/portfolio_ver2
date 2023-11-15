@@ -1,6 +1,7 @@
-@mixin center($w, $margin) {
-  max-width: $w;
-  width: 100%;
+@mixin center($mw, $w, $margin) {
+  max-width: $mw;
+  // width: 100%;
+  width: $w;
   padding: 0 10px;
   margin: $margin auto;
 }

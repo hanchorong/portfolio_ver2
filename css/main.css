@@ -107,26 +107,75 @@ nav .pc_ul li a {
 #main .main_greeting .animate:before {
   transform: translateY(100%);
 }
-#main .scollDown {
+#main .scrollDown {
   position: absolute;
   bottom: 5.5rem;
   left: 50%;
   transform: translateX(-50%);
 }
 
-#project .project_list {
-  width: 95%;
-  max-width: 1520px;
+#project {
   width: 100%;
+  height: 100%;
+}
+#project .project_list {
+  max-width: 1520px;
+  width: 85%;
   padding: 0 10px;
   margin: 0 auto;
 }
 #project .project_list a {
-  display: inline-block;
+  position: relative;
   color: #fff;
   font-size: 4rem;
   font-family: "Montserrat";
   font-weight: 400;
   height: 15rem;
   line-height: 15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#project .project_list a div {
+  transition: 0.3s ease-in;
+}
+#project .project_list a:hover li {
+  opacity: 0;
+  transition: 1s ease-in;
+}
+#project .project_list a:hover li:nth-child(4) {
+  opacity: 1;
+}
+#project .project_list a:hover div {
+  text-indent: 1.5rem;
+  transition: 0.3s ease-in;
+}
+#project .project_list a ul {
+  font-size: 1.6rem;
+  font-weight: 100;
+  line-height: 3rem;
+  text-align: right;
+}
+#project .project_list a ul li:nth-child(4) {
+  opacity: 0;
+  height: 90%;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#project .project_list a ul li:nth-child(4) img {
+  height: 100%;
+}
+
+/* keyframes */
+@keyframes slideSide {
+  0% {
+    opacity: 0;
+    transform: translateX(-3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
 }/*# sourceMappingURL=main.css.map */
