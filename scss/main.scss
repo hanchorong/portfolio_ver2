@@ -15,31 +15,60 @@
 section {
   width: 100%;
   height: 100vh;
-  background-color: #111;
+  background-color: #222;
   color: #fff;
 }
 
-nav {
-  background-color: #111;
-  .nav_wrap {
-    a {
-      color: #fff;
-    }
+.title {
+  font-family: $en-font;
+  text-align: center;
+  font-weight: 600;
+  opacity: 0;
+  @include titleSize;
+  @include animation(slideSide, 0.5s, ease-in, 0.3s);
+  padding: 6rem 0;
+}
+
+header {
+  background-color: #222;
+  .header_wrap {
     width: 90%;
     margin: 0 auto;
     padding: 1rem 0;
     @include flexbox(space-between, center);
+    h1 {
+      font-size: 2rem;
+      font-weight: 400;
+      a {
+        color: #fff;
+      }
+      &:hover {
+        a {
+          color: $point-color;
+          text-shadow: 0px 1px 2px $point-color;
+        }
+      }
+    }
   }
   a {
     font-family: $en-font;
   }
-  .pc_ul {
+  nav {
     width: 45%;
-    @include flexbox(space-between, center);
-    li {
-      font-weight: 100;
-      a {
-        color: #fff;
+    ul {
+      width: 100%;
+      @include flexbox(space-between, center);
+      li {
+        font-weight: 100;
+        a {
+          color: #fff;
+        }
+        &:hover {
+          a {
+            color: $point-color;
+            text-shadow: 0px 1px 2px $point-color;
+          }
+        }
       }
     }
   }
@@ -107,13 +136,78 @@ nav {
   }
 }
 
+// section - about
+// .han_slide {
+//   animation: Main-module--scroll--71f48 30s linear infinite;
+//     background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill='none' viewBox='0 0 725 450'%3E%3Cdefs%3E%3Cpath id='reuse-0' d='M211.133 62.194c28.707 0 52.552 8.566 71.536 25.698 19.446 17.131 29.401 38.893 29.864 65.284v227.108h-97.232V189.291c-1.39-29.632-16.206-44.449-44.45-44.449-22.224 0-40.05 10.418-53.477 31.253-13.428 20.836-20.141 47.691-20.141 80.565v123.624H0V76.779h88.204l6.945 48.617c11.112-19.91 26.392-35.42 45.838-46.533 19.91-11.112 43.292-16.669 70.146-16.669ZM690.741 76.78v303.504h-97.233V342.78c-29.169 30.559-62.969 45.838-101.399 45.838-44.912 0-81.49-13.427-109.734-40.282-27.781-26.855-41.671-66.674-41.671-119.457 0-33.337 6.714-62.507 20.141-87.509 13.89-25.466 32.179-45.144 54.867-59.035C438.4 68.445 462.708 61.5 488.636 61.5c26.855 0 48.154 4.167 63.896 12.501 15.742 7.871 29.633 19.215 41.671 34.032l6.251-31.254h90.287ZM519.89 309.442c33.799 0 58.339-15.28 73.618-45.838V189.29c-5.556-14.816-15.279-26.623-29.169-35.42-13.428-8.797-29.402-13.196-47.922-13.196-21.299 0-39.588 7.871-54.867 23.614-14.816 15.742-22.225 35.652-22.225 59.728 0 15.743 3.705 30.327 11.113 43.755 7.408 12.964 17.131 23.15 29.17 30.559 12.501 7.408 25.928 11.112 40.282 11.112Z'/%3E%3C/defs%3E%3Cg fill='%23C2C2C2' opacity='.1'%3E%3Cuse xlink:href='%23reuse-0'/%3E%3Cuse xlink:href='%23reuse-0'/%3E%3C/g%3E%3C/svg%3E);
+//     background-position: 100% calc(5.55556vh + 1.04167vw + 15rem);
+//     background-repeat: repeat-x;
+//     background-size: 25% auto;
+//     height: 100vh;
+//     left: 0;
+//     pointer-events: none;
+//     position: fixed;
+//     top: 0;
+//     -webkit-user-select: none;
+//     user-select: none;
+//     width: 100%;
+//     z-index: 1;
+// }
+#about {
+  position: relative;
+  .about_wrap {
+    width: 70%;
+    z-index: 1;
+    @include absolute(50%, 50%);
+    span {
+      color: $point-color;
+    }
+    article {
+      font-size: 2rem;
+      color: #ccc;
+      z-index: 1;
+      margin-top: 6rem;
+      p {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  .slide_view {
+    position: absolute;
+    z-index: 0;
+    bottom: 2rem;
+    width: 100%;
+    height: 30rem;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none;
+    box-shadow: inset 0px 2px 15px #111;
+    .slide_img_wrap {
+      display: flex;
+      flex-wrap: nowrap;
+      height: 400px;
+      animation: slideImg 25s linear 0s infinite;
+      img {
+        height: 100%;
+        opacity: 0.1;
+        filter: grayscale(95%);
+      }
+    }
+  }
+}
+
+@keyframes slideImg {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+// section - project
 #project {
   width: 100%;
   height: 100%;
   .project_list {
-    // width: 80%;
-    @include center($center01, 85%, 0);
-
+    @include center($center01, 80%, 0);
     a {
       position: relative;
       color: #fff;
@@ -129,7 +223,7 @@ nav {
       &:hover {
         li {
           opacity: 0;
-          transition: 1s ease-in;
+          transition: 0.3s ease-in;
         }
         li:nth-child(4) {
           opacity: 1;
@@ -144,6 +238,9 @@ nav {
         font-weight: 100;
         line-height: 3rem;
         text-align: right;
+        li {
+          transition: 0.3s ease-in;
+        }
         li:nth-child(4) {
           opacity: 0;
           height: 90%;
@@ -168,6 +265,6 @@ nav {
   }
   100% {
     opacity: 1;
-    transform: translateX(1rem);
+    transform: translateX(0);
   }
 }

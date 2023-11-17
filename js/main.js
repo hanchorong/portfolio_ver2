@@ -26,3 +26,23 @@ spanElements.forEach(function (span, index) {
     span.classList.toggle("animate");
   }, index * 15);
 });
+
+// about img slide
+
+const $slide_img_wrap = document.querySelector(".slide_img_wrap");
+const $slide_img = document.querySelectorAll(".slide_img_wrap img");
+// const lastImage = $slide_img[$slide_img.length - 1];
+
+let totalWidth = 0;
+
+$slide_img.forEach((img) => {
+  const img_width = img.width;
+  totalWidth += img_width;
+  let imgs = img.cloneNode(true);
+  $slide_img_wrap.appendChild(imgs);
+});
+$slide_img_wrap.style.width = `${totalWidth}px`;
+
+// let firstImg = $slide_img[0].cloneNode(true);
+// let firstImg = $slide_img.cloneNode(true);
+// $slide_img_wrap.appendChild(firstImg);
