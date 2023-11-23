@@ -3,6 +3,11 @@
     opacity: 1;
   }
 }
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -34,15 +39,18 @@ section {
   font-family: "Montserrat";
   text-align: center;
   font-weight: 600;
-  opacity: 0;
+  text-transform: uppercase;
   font-size: 5.5rem;
-  animation: slideSide 0.5s ease-in 0.3s forwards;
-  padding: 6rem 0;
+  margin: 8rem 0;
 }
 @media (max-width: 480px) {
   .title {
     font-size: 3rem;
   }
+}
+
+.slideSide {
+  animation: slideSide 0.7s ease-in 0.2s forwards;
 }
 
 header {
@@ -146,6 +154,7 @@ header nav ul li:hover a {
 
 #about {
   position: relative;
+  opacity: 0;
 }
 #about .about_wrap {
   width: 70%;
@@ -163,6 +172,8 @@ header nav ul li:hover a {
   color: #ccc;
   z-index: 1;
   margin-top: 6rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in 0.5s forwards;
 }
 #about .about_wrap article p {
   margin-bottom: 2rem;
@@ -192,12 +203,38 @@ header nav ul li:hover a {
   filter: grayscale(95%);
 }
 
-@keyframes slideImg {
-  100% {
-    transform: translateX(-100%);
-  }
+#information {
+  opacity: 0;
 }
+#information .info_wrap {
+  max-width: 1520px;
+  width: 85%;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+#information .info_wrap ul {
+  font-family: "Montserrat";
+  font-size: 2.8rem;
+  margin-top: 5rem;
+}
+#information .info_wrap ul li {
+  text-align: right;
+  margin-bottom: 5rem;
+  background: linear-gradient(to right, #fff 50%, #666 50%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  background-position-x: 100%;
+  transition: background-position-x 0.5s ease;
+}
+#information .info_wrap ul li span {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
 #project {
+  opacity: 0;
   width: 100%;
   height: 100%;
 }
@@ -257,11 +294,14 @@ header nav ul li:hover a {
 /* keyframes */
 @keyframes slideSide {
   0% {
-    opacity: 0;
     transform: translateX(-3rem);
   }
   100% {
-    opacity: 1;
     transform: translateX(0);
+  }
+}
+@keyframes slideImg {
+  100% {
+    transform: translateX(-100%);
   }
 }/*# sourceMappingURL=main.css.map */

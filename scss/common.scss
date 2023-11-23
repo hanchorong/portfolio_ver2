@@ -17,7 +17,7 @@ html::-webkit-scrollbar-thumb {
 body {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.6rem;
-  color: #222;
+  background-color: #222;
   line-height: 1.5;
   letter-spacing: -0.5px;
 }
@@ -40,6 +40,25 @@ hr {
   display: block;
   clear: both;
 }
+.fadeOut {
+  @include animation(fadeOut, 0.5s, ease-in, 0.3s);
+}
+.fadeIn {
+  @include animation(fadeIn, 0.5s, ease-in, 0.3s);
+}
+
+.animated-section {
+  @include animation(fadeOut, 0.7s, ease-in, 0.5s);
+}
+
+.animated-section.in-view {
+  @include animation(fadeIn, 0.7s, ease-in, 0.5s);
+}
+.child-in-view {
+}
+// .in-view {
+//   @include animation(fadeIn, 0.5s, ease-in, 0.3s);
+// }
 
 /* content */
 #wrap {

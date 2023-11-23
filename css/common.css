@@ -4,6 +4,11 @@
     opacity: 1;
   }
 }
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -30,7 +35,7 @@ html::-webkit-scrollbar-thumb {
 body {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.6rem;
-  color: #222;
+  background-color: #222;
   line-height: 1.5;
   letter-spacing: -0.5px;
 }
@@ -55,6 +60,22 @@ hr {
   content: "";
   display: block;
   clear: both;
+}
+
+.fadeOut {
+  animation: fadeOut 0.5s ease-in 0.3s forwards;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in 0.3s forwards;
+}
+
+.animated-section {
+  animation: fadeOut 0.7s ease-in 0.5s forwards;
+}
+
+.animated-section.in-view {
+  animation: fadeIn 0.7s ease-in 0.5s forwards;
 }
 
 /* content */
