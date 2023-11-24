@@ -45,6 +45,30 @@
   justify-content: $item1;
   align-items: $item2;
 }
+@mixin border($fz, $fw) {
+  border: 1px solid rgba(10, 205, 206, 0.25);
+  border-radius: 10rem;
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  font-size: $fz;
+  font-weight: $fw;
+  color: $point-color;
+}
+@mixin btn($fz, $fw) {
+  border: 1px solid rgba(10, 205, 206, 0.25);
+  border-radius: 10rem;
+  background-color: rgba(10, 205, 206, 0.25);
+  display: inline-block;
+  padding: 0.5rem 1.8rem;
+  font-size: $fz;
+  font-weight: $fw;
+  color: $point-color;
+  &:hover {
+    cursor: pointer;
+    background-color: #00ddb5bb;
+    color: #222;
+  }
+}
 @mixin btn01($fz) {
   position: relative;
   display: inline-block;
@@ -75,6 +99,44 @@
   &:after {
     bottom: 0;
     right: 0;
+  }
+}
+@mixin dancingText {
+  span {
+    display: inline-block;
+    transition: transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
+    transform: translate(20%, 100%);
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.03em;
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-40%);
+      transition: transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
+    }
+    &.row {
+      overflow: hidden;
+      line-height: 1;
+      display: block;
+      transform: none;
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  .animate {
+    transform: translate(0, 0);
+
+    &:before {
+      transform: translateY(100%);
+    }
   }
 }
 @mixin animation($name, $speed, $bezier, $delay) {

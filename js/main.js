@@ -1,7 +1,59 @@
-// main greeting letter
-const $main_greeting = document.querySelectorAll(".main_greeting");
+// ---pull page
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    const spanElements = entry.target.querySelectorAll(
+      ".main_greeting span:not(.row)"
+    );
+    const spanElements_email = entry.target.querySelectorAll(
+      ".more a:first-child span:not(.row)"
+    );
+    const titles = entry.target.querySelectorAll(".title");
+    const contact_article = entry.target.querySelector("#contact article");
 
-$main_greeting.forEach(function (strip) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("in-view");
+
+      spanElements.forEach(spanAdd);
+      spanElements_email.forEach(spanAdd);
+
+      titles.forEach((title) => {
+        if (entry.target.hasChildNodes(".title")) {
+          title.classList.add("slideSide");
+        }
+      });
+
+      if (contact_article) {
+        contact_article.classList.add("transform-none");
+        console.log(contact_article);
+      }
+    } else {
+      entry.target.classList.remove("in-view");
+
+      spanElements.forEach(spanRemove);
+      spanElements_email.forEach(spanRemove);
+
+      titles.forEach((title) => {
+        title.classList.remove("slideSide");
+      });
+
+      if (contact_article) {
+        contact_article.classList.remove("transform-none");
+      }
+    }
+  });
+});
+
+const sections = document.querySelectorAll(".animated-section");
+
+sections.forEach((section) => {
+  sectionObserver.observe(section);
+});
+
+// main, contact text
+const $main_greeting = document.querySelectorAll(".main_greeting");
+const $email = document.querySelectorAll(".more a:first-child");
+
+function onTrimText(strip) {
   const rows = strip.innerHTML.trim().split("<br>");
   strip.innerHTML = "";
 
@@ -19,59 +71,21 @@ $main_greeting.forEach(function (strip) {
       rowElement.appendChild(spanElement);
     });
   });
-});
+}
 
-// const spanElements = document.querySelectorAll(".main_greeting span:not(.row)");
-// spanElements.forEach(function (span, index) {
-//   setTimeout(function () {
-//     span.classList.toggle("animate");
-//   }, index * 15);
-// });
+$main_greeting.forEach(onTrimText);
+$email.forEach(onTrimText);
 
-// ---pull page
-
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    const spanElements = entry.target.querySelectorAll(
-      ".main_greeting span:not(.row)"
-    );
-    const titles = entry.target.querySelectorAll(".title");
-
-    if (entry.isIntersecting) {
-      entry.target.classList.add("in-view");
-
-      spanElements.forEach(function (span, index) {
-        setTimeout(function () {
-          span.classList.add("animate");
-        }, index * 15);
-      });
-
-      titles.forEach((title) => {
-        if (entry.target.hasChildNodes(".title")) {
-          title.classList.add("slideSide");
-        }
-      });
-    } else {
-      entry.target.classList.remove("in-view");
-
-      spanElements.forEach(function (span, index) {
-        setTimeout(function () {
-          span.classList.remove("animate");
-        }, index * 15);
-      });
-
-      titles.forEach((title) => {
-        title.classList.remove("slideSide");
-      });
-    }
-  });
-});
-
-const sections = document.querySelectorAll(".animated-section");
-
-sections.forEach((section) => {
-  sectionObserver.observe(section);
-});
+function spanAdd(span, index) {
+  setTimeout(function () {
+    span.classList.add("animate");
+  }, index * 60);
+}
+function spanRemove(span, index) {
+  setTimeout(function () {
+    span.classList.remove("animate");
+  }, index * 60);
+}
 
 // about img slide
 const $slide_img_wrap = document.querySelector(".slide_img_wrap");
@@ -94,9 +108,7 @@ function scrollEvent() {
   const scroll_Y = window.scrollY;
 
   education_li.forEach((li) => {
-    console.log(li.offsetTop, window.innerHeight, scroll_Y);
     if (li.offsetTop < window.innerHeight + scroll_Y - 200) {
-      console.log("Hmm");
       li.style.backgroundPositionX = "0%";
     } else {
       li.style.backgroundPositionX = "100%";

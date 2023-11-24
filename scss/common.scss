@@ -8,11 +8,9 @@ html {
 }
 
 html::-webkit-scrollbar {
-  width: 10px;
+  display: none;
 }
 html::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #222;
 }
 body {
   font-family: "Noto Sans KR", sans-serif;
@@ -269,32 +267,18 @@ hr {
   }
 }
 
-.footer {
-  position: relative;
-  @include center($center01, 100%, 0);
-  padding-top: 4.5vh;
-  padding-bottom: 4.5vh;
-  .footer__copyright {
-    font-size: 15px;
-    color: #888;
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 13rem;
+  line-height: 13rem;
+  div {
+    color: #fff;
+    font-family: $en-font;
     text-align: center;
-  }
-  .footer__btn-top {
-    @include absolute(100%, 50%);
-    font-weight: bold;
-    transform: translate(-137%, -50%);
-    cursor: pointer;
-  }
-  .sns {
-    font-size: 0;
-    font-weight: bold;
-    li {
-      display: inline-block;
-      margin-left: 4rem;
-      a {
-        font-size: 1.8rem;
-      }
-    }
   }
 }
 
@@ -316,7 +300,7 @@ hr {
 }
 @media (max-width: 768px) {
   html {
-    font-size: 55.5%;
+    font-size: 50.5%;
   }
   .header__text {
     display: none;
