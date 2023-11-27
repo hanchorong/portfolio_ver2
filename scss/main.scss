@@ -32,51 +32,6 @@ section {
   @include animation(slideSide, 0.7s, ease-in, 0.2s);
 }
 
-header {
-  background-color: #222;
-  .header_wrap {
-    width: 90%;
-    margin: 0 auto;
-    padding: 1rem 0;
-    @include flexbox(space-between, center);
-    h1 {
-      font-size: 2rem;
-      font-weight: 400;
-      a {
-        color: #fff;
-      }
-      &:hover {
-        a {
-          color: $point-color;
-          text-shadow: 0px 1px 2px $point-color;
-        }
-      }
-    }
-  }
-  a {
-    font-family: $en-font;
-  }
-  nav {
-    width: 45%;
-    ul {
-      width: 100%;
-      @include flexbox(space-between, center);
-      li {
-        font-weight: 100;
-        a {
-          color: #fff;
-        }
-        &:hover {
-          a {
-            color: $point-color;
-            text-shadow: 0px 1px 2px $point-color;
-          }
-        }
-      }
-    }
-  }
-}
-
 // section - main
 
 #main {
@@ -198,6 +153,9 @@ header {
         }
       }
     }
+    .transform-up {
+      animation: transform-up 0.5s linear 1.5s forwards;
+    }
   }
 }
 
@@ -270,14 +228,12 @@ header {
 
     article {
       font-size: 2.5rem;
-      // opacity: 0;
       transition: transform 1s ease-in;
       transform: translateY(40px) translateZ(0px);
 
       p {
         line-height: 4rem;
         &:last-child {
-          font-family: $en-font;
           font-weight: 100;
           padding: 1.5rem 0;
           font-size: 2rem;
@@ -285,54 +241,39 @@ header {
       }
     }
     .transform-none {
-      transition: transform 1s ease-in;
-
-      opacity: 1;
       transform: none;
     }
     .more {
       font-family: $en-font;
-      position: relative;
-      width: 100%;
-      height: 30vh;
       a:nth-child(1) {
-        position: absolute;
-        top: 20%;
-        left: 0;
         font-weight: 500;
-        font-size: 5vw;
+        font-size: 5rem;
         color: $point-color;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transition: 0.5s ease;
+        padding-bottom: 2rem;
         @include dancingText;
         span {
           &.row {
             line-height: 2;
           }
         }
-        // display: flex;
-        // flex-direction: row;
-        // align-items: baseline;
-        // width: 100%;
-        // font-size: 5vw;
-        // color: $point-color;
-        // padding: 2.5rem 0 4rem;
-        transition: 0.5s ease;
-        // i {
-        //   font-size: 2.5rem;
-        //   transition: transform 0.3s ease-in;
-        //   padding-right: 0.3rem;
-        // }
         &:hover {
           padding-left: 3rem;
         }
-        // &:hover i {
-        //   transform: translateY(-50%);
-        // }
+        &:before {
+          content: "\f1d8";
+          display: inline;
+          font-size: 2.5rem;
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          padding-right: 1rem;
+        }
       }
 
       a:nth-child(2) {
-        position: absolute;
-        bottom: 0;
-        left: 0;
         @include btn(3rem, 300);
         color: #01ffcf;
         font-weight: 400;
@@ -354,5 +295,14 @@ header {
 @keyframes slideImg {
   100% {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes transform-up {
+  0% {
+    transform: translateY(1rem);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

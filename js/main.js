@@ -1,20 +1,19 @@
 // ---pull page
 const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
+    const titles = entry.target.querySelectorAll(".title");
     const spanElements = entry.target.querySelectorAll(
       ".main_greeting span:not(.row)"
     );
     const spanElements_email = entry.target.querySelectorAll(
       ".more a:first-child span:not(.row)"
     );
-    const titles = entry.target.querySelectorAll(".title");
+    const skills = entry.target.querySelectorAll(".skill ul li");
     const contact_article = entry.target.querySelector("#contact article");
 
     if (entry.isIntersecting) {
+      console.log(spanElements);
       entry.target.classList.add("in-view");
-
-      spanElements.forEach(spanAdd);
-      spanElements_email.forEach(spanAdd);
 
       titles.forEach((title) => {
         if (entry.target.hasChildNodes(".title")) {
@@ -22,20 +21,32 @@ const sectionObserver = new IntersectionObserver((entries) => {
         }
       });
 
+      spanElements.forEach(spanAdd);
+      spanElements_email.forEach(spanAdd);
+
+      skills.forEach((skill, i) => {
+        setTimeout(() => {
+          skill.classList.add("transform-up");
+        }, i * 150);
+      });
       if (contact_article) {
         contact_article.classList.add("transform-none");
-        console.log(contact_article);
       }
     } else {
       entry.target.classList.remove("in-view");
-
-      spanElements.forEach(spanRemove);
-      spanElements_email.forEach(spanRemove);
 
       titles.forEach((title) => {
         title.classList.remove("slideSide");
       });
 
+      spanElements.forEach(spanRemove);
+      spanElements_email.forEach(spanRemove);
+
+      skills.forEach((skill, i) => {
+        setTimeout(() => {
+          skill.classList.remove("transform-up");
+        }, i * 150);
+      });
       if (contact_article) {
         contact_article.classList.remove("transform-none");
       }
@@ -49,7 +60,7 @@ sections.forEach((section) => {
   sectionObserver.observe(section);
 });
 
-// main, contact text
+// section - main, contact text
 const $main_greeting = document.querySelectorAll(".main_greeting");
 const $email = document.querySelectorAll(".more a:first-child");
 
@@ -87,7 +98,7 @@ function spanRemove(span, index) {
   }, index * 60);
 }
 
-// about img slide
+// section - about img slide
 const $slide_img_wrap = document.querySelector(".slide_img_wrap");
 const $slide_img = document.querySelectorAll(".slide_img_wrap img");
 
