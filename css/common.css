@@ -57,14 +57,6 @@ hr {
   clear: both;
 }
 
-.fadeOut {
-  animation: fadeOut 0.5s ease-in 0.3s forwards;
-}
-
-.fadeIn {
-  animation: fadeIn 0.5s ease-in 0.3s forwards;
-}
-
 .animated-section {
   animation: fadeOut 0.7s ease-in 0.5s forwards;
 }
@@ -134,7 +126,10 @@ header nav .mo_div {
   font-size: 2.25rem;
 }
 header nav .mo_div ul {
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease 0s, visibility 0s ease 0.3s;
   position: absolute;
   width: -moz-fit-content;
   width: fit-content;
@@ -145,6 +140,12 @@ header nav .mo_div ul {
   right: 10%;
   z-index: 1000;
 }
+header nav .mo_div .visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease 0s, visibility 0s ease 0s;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -185,16 +186,14 @@ footer div {
   header nav .mo_div {
     display: block;
   }
-  #contact .contact_wrap .more a:nth-child(1) {
-    font-size: 4.5rem !important;
-  }
 }
 @media (max-width: 480px) {
   html {
     font-size: 53.5%;
   }
-  #contact .contact_wrap .more a:nth-child(1) {
-    font-size: 3.2rem !important;
+  header nav .mo_div {
+    font-size: 3rem;
+    display: block;
   }
   .nav .nav-list {
     flex-direction: column;

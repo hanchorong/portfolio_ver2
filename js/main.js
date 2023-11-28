@@ -1,4 +1,5 @@
 // ---pull page
+
 const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     const titles = entry.target.querySelectorAll(".title");
@@ -12,7 +13,6 @@ const sectionObserver = new IntersectionObserver((entries) => {
     const contact_article = entry.target.querySelector("#contact article");
 
     if (entry.isIntersecting) {
-      console.log(spanElements);
       entry.target.classList.add("in-view");
 
       titles.forEach((title) => {
@@ -24,11 +24,11 @@ const sectionObserver = new IntersectionObserver((entries) => {
       spanElements.forEach(spanAdd);
       spanElements_email.forEach(spanAdd);
 
-      skills.forEach((skill, i) => {
-        setTimeout(() => {
-          skill.classList.add("transform-up");
-        }, i * 150);
-      });
+      // skills.forEach((skill, i) => {
+      //   setTimeout(() => {
+      //     skill.classList.add("transform-up");
+      //   }, i * 150);
+      // });
       if (contact_article) {
         contact_article.classList.add("transform-none");
       }
@@ -42,11 +42,12 @@ const sectionObserver = new IntersectionObserver((entries) => {
       spanElements.forEach(spanRemove);
       spanElements_email.forEach(spanRemove);
 
-      skills.forEach((skill, i) => {
-        setTimeout(() => {
-          skill.classList.remove("transform-up");
-        }, i * 150);
-      });
+      // skills.forEach((skill, i) => {
+      //   setTimeout(() => {
+      //     skill.classList.remove("transform-up");
+      //   }, i * 150);
+      // });
+
       if (contact_article) {
         contact_article.classList.remove("transform-none");
       }
@@ -117,13 +118,40 @@ const education_li = document.querySelectorAll(".education li");
 
 function scrollEvent() {
   const scroll_Y = window.scrollY;
+  const skill_ul = document.querySelector(".skill ul");
+  const skills = skill_ul.querySelectorAll("li");
+  const second_section = document.querySelector("#about");
+  const $topButton = document.querySelector("#topBtn");
 
   education_li.forEach((li) => {
-    if (li.offsetTop < window.innerHeight + scroll_Y - 200) {
+    // if (li.offsetTop < window.innerHeight + scroll_Y - 200) {
+    if (scroll_Y >= li.offsetTop - 300) {
       li.style.backgroundPositionX = "0%";
     } else {
       li.style.backgroundPositionX = "100%";
     }
   });
+
+  skills.forEach((skill, i) => {
+    if (scroll_Y >= skill_ul.offsetTop - 450) {
+      setTimeout(() => {
+        skill.classList.add("transform-up");
+      }, i * 100);
+    } else {
+      setTimeout(() => {
+        skill.classList.remove("transform-up");
+      }, i * 100);
+    }
+  });
+
+  if (second_section.offsetTop < scroll_Y) {
+    $topButton.classList.add("fadeIn");
+    $topButton.style.visibility = "visible";
+  } else {
+    $topButton.classList.remove("fadeIn");
+    $topButton.style.visibility = "hidden";
+  }
 }
 window.addEventListener("scroll", scrollEvent);
+window.addEventListener("resize", scrollEvent);
+window.addEventListener("orientationchange", scrollEvent);

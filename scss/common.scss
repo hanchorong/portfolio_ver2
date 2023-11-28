@@ -38,17 +38,10 @@ hr {
   display: block;
   clear: both;
 }
-.fadeOut {
-  @include animation(fadeOut, 0.5s, ease-in, 0.3s);
-}
-.fadeIn {
-  @include animation(fadeIn, 0.5s, ease-in, 0.3s);
-}
 
 .animated-section {
   @include animation(fadeOut, 0.7s, ease-in, 0.5s);
 }
-
 .animated-section.in-view {
   @include animation(fadeIn, 0.7s, ease-in, 0.5s);
 }
@@ -107,11 +100,15 @@ header {
         }
       }
     }
+
     .mo_div {
       position: relative;
       font-size: 2.25rem;
       ul {
-        display: none;
+        display: flex;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease 0s, visibility 0s ease 0.3s;
         position: absolute;
         width: fit-content;
         height: 20rem;
@@ -120,8 +117,11 @@ header {
         top: 6rem;
         right: 10%;
         z-index: 1000;
-        li {
-        }
+      }
+      .visible {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s ease 0s, visibility 0s ease 0s;
       }
     }
   }
@@ -385,9 +385,7 @@ footer {
       }
     }
   }
-  #contact .contact_wrap .more a:nth-child(1) {
-    font-size: 4.5rem !important;
-  }
+
   // .header__text {
   //   display: none;
   // }
@@ -421,9 +419,15 @@ footer {
   html {
     font-size: 53.5%;
   }
-  #contact .contact_wrap .more a:nth-child(1) {
-    font-size: 3.2rem !important;
+  header {
+    nav {
+      .mo_div {
+        font-size: 3rem;
+        display: block;
+      }
+    }
   }
+
   .nav {
     .nav-list {
       flex-direction: column;

@@ -54,6 +54,30 @@ section {
   animation: slideSide 0.7s ease-in 0.2s forwards;
 }
 
+button#topBtn {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease 0s, visibility 0s ease 0.3s;
+  position: fixed;
+  right: 2.5vw;
+  bottom: 2.5vh;
+  width: 3rem;
+  height: 5rem;
+  background-color: rgba(255, 255, 255, 0.2078431373);
+  border-radius: 10rem;
+}
+button#topBtn i {
+  font-size: 2.2rem;
+  color: #ccc;
+}
+button#topBtn:hover i {
+  animation: transform-up 0.7s ease-in 0.2s infinite;
+}
+
+.fadeIn {
+  animation: fadeIn 0.7s ease-in 0.5s forwards;
+}
+
 #main {
   position: relative;
 }
@@ -103,8 +127,8 @@ section {
 }
 #main .scrollDown {
   position: absolute;
-  bottom: 5.5rem;
   left: 50%;
+  bottom: 10vh;
   transform: translateX(-50%);
 }
 
@@ -216,6 +240,9 @@ section {
   gap: 0.8rem;
 }
 #information .info_wrap .skill ul li {
+  opacity: 0;
+  visibility: none;
+  transition: opacity 0.5s ease;
   border: 1px solid rgba(10, 205, 206, 0.25);
   border-radius: 10rem;
   display: inline-block;
@@ -224,8 +251,10 @@ section {
   font-weight: 500;
   color: #00ddb3;
 }
-#information .info_wrap .transform-up {
-  animation: transform-up 0.5s linear 1.5s forwards;
+#information .info_wrap .skill .transform-up {
+  visibility: visible;
+  opacity: 1;
+  animation: transform-up 0.5s linear 0.5s forwards;
 }
 
 #project {
@@ -324,6 +353,7 @@ section {
   font-size: 5rem;
   color: #00ddb3;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   transition: 0.5s ease;
@@ -411,9 +441,25 @@ section {
 }
 @keyframes transform-up {
   0% {
-    transform: translateY(1rem);
+    transform: translateY(-1rem);
   }
   100% {
     transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  #contact .contact_wrap .more a:nth-child(1) {
+    font-size: 4.5rem;
+  }
+}
+@media (max-width: 480px) {
+  #contact .contact_wrap .more {
+    padding-top: 3rem;
+  }
+  #contact .contact_wrap .more a:nth-child(1) {
+    font-size: 3rem;
+  }
+  #contact .contact_wrap .more a:nth-child(1):before {
+    display: none;
   }
 }/*# sourceMappingURL=main.css.map */
