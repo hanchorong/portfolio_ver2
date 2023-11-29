@@ -6,9 +6,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
     const spanElements = entry.target.querySelectorAll(
       ".main_greeting span:not(.row)"
     );
-    const spanElements_email = entry.target.querySelectorAll(
-      ".more a:first-child span:not(.row)"
-    );
+
     const skills = entry.target.querySelectorAll(".skill ul li");
     const contact_article = entry.target.querySelector("#contact article");
 
@@ -22,7 +20,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
       });
 
       spanElements.forEach(spanAdd);
-      spanElements_email.forEach(spanAdd);
+      // spanElements_email.forEach(spanAdd);
 
       // skills.forEach((skill, i) => {
       //   setTimeout(() => {
@@ -40,7 +38,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
       });
 
       spanElements.forEach(spanRemove);
-      spanElements_email.forEach(spanRemove);
+      // spanElements_email.forEach(spanRemove);
 
       // skills.forEach((skill, i) => {
       //   setTimeout(() => {
@@ -64,7 +62,9 @@ sections.forEach((section) => {
 // section - main, contact text
 const $main_greeting = document.querySelectorAll(".main_greeting");
 const $email = document.querySelectorAll(".more a:first-child");
-
+// const spanElements_email = document.querySelectorAll(
+//   ".more a:first-child span:not(.row)"
+// );
 function onTrimText(strip) {
   const rows = strip.innerHTML.trim().split("<br>");
   strip.innerHTML = "";
@@ -85,8 +85,9 @@ function onTrimText(strip) {
   });
 }
 
-$main_greeting.forEach(onTrimText);
 $email.forEach(onTrimText);
+$main_greeting.forEach(onTrimText);
+// spanElements_email.forEach(spanAdd);
 
 function spanAdd(span, index) {
   setTimeout(function () {
@@ -114,14 +115,18 @@ $slide_img.forEach((img) => {
 $slide_img_wrap.style.width = `${totalWidth}px`;
 
 // section - information education list
-const education_li = document.querySelectorAll(".education li");
 
 function scrollEvent() {
-  const scroll_Y = window.scrollY;
+  const education_li = document.querySelectorAll(".education li");
   const skill_ul = document.querySelector(".skill ul");
   const skills = skill_ul.querySelectorAll("li");
   const second_section = document.querySelector("#about");
   const $topButton = document.querySelector("#topBtn");
+  const $email_ = document.querySelector(".more a:first-child");
+  const scroll_Y = window.scrollY;
+  const spanElements_email = document.querySelectorAll(
+    ".more a:first-child span:not(.row)"
+  );
 
   education_li.forEach((li) => {
     // if (li.offsetTop < window.innerHeight + scroll_Y - 200) {
@@ -150,6 +155,12 @@ function scrollEvent() {
   } else {
     $topButton.classList.remove("fadeIn");
     $topButton.style.visibility = "hidden";
+  }
+
+  if (scroll_Y >= $email_.offsetTop - 500) {
+    spanElements_email.forEach(spanAdd);
+  } else {
+    spanElements_email.forEach(spanRemove);
   }
 }
 window.addEventListener("scroll", scrollEvent);

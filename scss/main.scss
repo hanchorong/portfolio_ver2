@@ -32,27 +32,31 @@ section {
   @include animation(slideSide, 0.7s, ease-in, 0.2s);
 }
 
-button#topBtn {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease 0s, visibility 0s ease 0.3s;
+.slide-in {
   position: fixed;
-  right: 2.5vw;
-  bottom: 2.5vh;
-  width: 3rem;
-  height: 5rem;
-  background-color: #ffffff35;
-  border-radius: 10rem;
-  i {
-    font-size: 2.2rem;
-    color: #ccc;
-  }
-  &:hover i {
-    animation: transform-up 0.7s ease-in 0.2s infinite;
-  }
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    to top,
+    #22222235,
+    #36475b40,
+    #18779240,
+    #00aab340,
+    #00ddb345
+  );
+  transform-origin: top;
+  animation: scaleY 1s 0s cubic-bezier(0.65, 0.02, 0.23, 1);
 }
-.fadeIn {
-  @include animation(fadeIn, 0.7s, ease-in, 0.5s);
+@keyframes scaleY {
+  0% {
+    transform: scaleY(1) translateZ(0);
+  }
+  100% {
+    transform: scaleY(0) translateZ(0);
+  }
 }
 
 // section - main
@@ -69,7 +73,6 @@ button#topBtn {
     text-transform: uppercase;
     @include dancingText;
   }
-
   .scrollDown {
     position: absolute;
     left: 50%;
@@ -199,7 +202,6 @@ button#topBtn {
       font-family: $en-font;
       font-weight: 400;
       height: 15rem;
-      line-height: 15rem;
       @include flexbox(space-between, center);
       div {
         transition: 0.3s ease-in;
@@ -244,19 +246,19 @@ button#topBtn {
 // section - contact
 #contact {
   opacity: 0;
-  padding: 6rem 0;
-  position: relative;
+  padding: 6rem 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   .contact_wrap {
     @include center($center01, 80%, 0);
     .title {
       padding: 0 0 6rem;
     }
-
     article {
       font-size: 2.5rem;
       transition: transform 1s ease-in;
       transform: translateY(40px) translateZ(0px);
-
       p {
         line-height: 4rem;
         &:last-child {
@@ -307,6 +309,17 @@ button#topBtn {
       }
     }
   }
+  footer {
+    width: 100%;
+    height: 8rem;
+    line-height: 8rem;
+    div {
+      color: #fff;
+      font-family: $en-font;
+      font-weight: 100;
+      text-align: center;
+    }
+  }
 }
 
 /* keyframes */
@@ -343,8 +356,14 @@ button#topBtn {
 }
 
 @media (max-width: 480px) {
+  #main .main_greeting {
+    font-size: 5.5rem;
+  }
+  #project .project_list a div {
+    font-size: 2.8rem;
+  }
   #contact .contact_wrap .more {
-    padding-top: 3rem;
+    padding-top: 10vh;
     a:nth-child(1) {
       font-size: 3rem;
       &:before {
