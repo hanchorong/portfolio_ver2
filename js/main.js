@@ -91,12 +91,12 @@ $main_greeting.forEach(onTrimText);
 
 function spanAdd(span, index) {
   setTimeout(function () {
-    span.classList.add("animate");
+    span.classList.add("animate", "shineShadow");
   }, index * 60);
 }
 function spanRemove(span, index) {
   setTimeout(function () {
-    span.classList.remove("animate");
+    span.classList.remove("animate", "shineShadow");
   }, index * 60);
 }
 
