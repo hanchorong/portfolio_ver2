@@ -138,6 +138,7 @@
     }
   }
 }
+
 @mixin animation($name, $speed, $bezier, $delay) {
   animation: $name $speed $bezier $delay forwards;
 }

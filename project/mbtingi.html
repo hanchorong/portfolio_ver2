@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="./../css/common.css" />
     <link rel="stylesheet" href="./../css/project.css" />
     <script src="./../js/common.js" defer></script>
+    <script src="./../js/main.js" defer></script>
     <!-- font awesome -->
     <script
       src="https://kit.fontawesome.com/c44f54db1d.js"
@@ -30,7 +31,7 @@
       <header>
         <div class="header_wrap">
           <h1 class="logo">
-            <a href="#"
+            <a href="#" onClick="top.location='javascript:location.reload()'"
               >CHORONG <span>HAN</span>
               <span class="blind"
                 >CHORONG HAN :: 웹 퍼블리셔 한초롱 포트폴리오</span
@@ -40,9 +41,7 @@
           <nav class="prj_nav">
             <ul class="pc_ul">
               <li>
-                <a href="/" target="_blank"
-                  ><i class="fa-solid fa-house"></i
-                ></a>
+                <a href="/"><i class="fa-solid fa-house"></i></a>
               </li>
               <li>
                 <a href="https://github.com/hanchorong" target="_blank"
@@ -59,9 +58,7 @@
               <button><i class="fa-solid fa-bars"></i></button>
               <ul>
                 <li>
-                  <a href="/" target="_blank"
-                    ><i class="fa-solid fa-house"></i
-                  ></a>
+                  <a href="/"><i class="fa-solid fa-house"></i></a>
                 </li>
                 <li>
                   <a href="https://github.com/hanchorong" target="_blank"
@@ -79,7 +76,7 @@
         </div>
       </header>
 
-      <section class="prj_main">
+      <section class="prj_main animated-section">
         <div class="main_img_view">
           <div class="img_div">
             <img src="./../img/mbtingi_thumb.png" alt="mbtingi main image" />
@@ -100,10 +97,11 @@
           <ul>
             <li>ejs</li>
             <li>css</li>
-            <li>js</li>
+            <li>Javascript</li>
             <li>jquery</li>
+            <li>Bootstrap</li>
           </ul>
-          <h3 class="sub_title">
+          <h3 class="sub_title title">
             자신의 MBTI를 입력하여 맞춤 상대를 찾아주는 소개팅 서비스입니다.
           </h3>
           <p>나랑 딱 맞는 MBTI 끼리끼리.</p>
@@ -113,14 +111,72 @@
           </p>
         </article>
       </section>
-      <section class="prj_detail">
-        <article>
-          <h2>My Role</h2>
+
+      <section class="prj_role animated-section">
+        <div class="role">
+          <h2 class="title">My Role</h2>
           <hr />
-        </article>
+          <textarea readonly>
+- Position: Front_end
+- Stack : EJS, CSS, Javascript, Express, Axios
+- Work : 퍼블리싱, 유효성검사, Axios 요청.
+  회원가입 페이지 구현
+  로그인 페이지 구현
+  아이디/비밀번호 찾기 구현
+  프로필 셋팅 페이지 구현
+  매칭페이지 구현
+  채팅페이지 퍼블리싱
+  마이페이지 구현 - 계정정보, 매칭 프로필정보 수정 구현
+            </textarea
+          >
+        </div>
       </section>
+
+      <section class="prj_detail animated-section">
+        <div class="detail">
+          <h2 class="title">Detail</h2>
+          <hr />
+          <ul>
+            <li>
+              <p>메엔화면</p>
+              <img src="./../img/prj/mbtingi/1.gif" alt="main page gif" />
+            </li>
+            <li>
+              <p>회원가입</p>
+              <img src="./../img/prj/mbtingi/2.gif" alt="sign up page gif" />
+            </li>
+            <li>
+              <p>로그인</p>
+              <img src="./../img/prj/mbtingi/3.gif" alt="sign in page gif" />
+            </li>
+            <li>
+              <p>아이디/패스워드 재설정</p>
+              <img
+                src="./../img/prj/mbtingi/4.gif"
+                alt="ID/password check page gif"
+              />
+            </li>
+            <li>
+              <p>매칭</p>
+              <img src="./../img/prj/mbtingi/5.gif" alt="matching page gif" />
+            </li>
+            <li>
+              <p>채팅</p>
+              <img src="./../img/prj/mbtingi/6.gif" alt="chat page gif" />
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer>
+        <hr />
+        <div>© 2023. CHORONG HAN All Rights Reserved.</div>
+      </footer>
+
       <!-- 최상단 이동 버튼 -->
       <button id="topBtn"><i class="fa-solid fa-angles-up fa-fade"></i></button>
+      <!-- 첫시작 -->
+      <div class="slide-in" style="transform: scaleY(0) translateZ(0px)"></div>
     </div>
   </body>
 </html>

@@ -1,70 +1,34 @@
-// ---pull page
-
+// section animation
 const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     const titles = entry.target.querySelectorAll(".title");
     const spanElements = entry.target.querySelectorAll(
       ".main_greeting span:not(.row)"
     );
-
-    const skills = entry.target.querySelectorAll(".skill ul li");
     const contact_article = entry.target.querySelector("#contact article");
+    const title_area = entry.target.querySelector(".title_area");
 
     if (entry.isIntersecting) {
       entry.target.classList.add("in-view");
-
-      titles.forEach((title) => {
-        if (entry.target.hasChildNodes(".title")) {
-          title.classList.add("slideSide");
-        }
-      });
-
+      titles.forEach((title) => title.classList.add("slideSide"));
       spanElements.forEach(spanAdd);
-      // spanElements_email.forEach(spanAdd);
-
-      // skills.forEach((skill, i) => {
-      //   setTimeout(() => {
-      //     skill.classList.add("transform-up");
-      //   }, i * 150);
-      // });
-      if (contact_article) {
-        contact_article.classList.add("transform-none");
-      }
+      contact_article?.classList.add("transform-none");
+      title_area?.classList.add("titleArea_anim");
     } else {
       entry.target.classList.remove("in-view");
-
-      titles.forEach((title) => {
-        title.classList.remove("slideSide");
-      });
-
+      titles.forEach((title) => title.classList.remove("slideSide"));
       spanElements.forEach(spanRemove);
-      // spanElements_email.forEach(spanRemove);
-
-      // skills.forEach((skill, i) => {
-      //   setTimeout(() => {
-      //     skill.classList.remove("transform-up");
-      //   }, i * 150);
-      // });
-
-      if (contact_article) {
-        contact_article.classList.remove("transform-none");
-      }
+      contact_article?.classList.remove("transform-none");
+      title_area?.classList.remove("titleArea_anim");
     }
   });
 });
 
+// Observe animated sections
 const sections = document.querySelectorAll(".animated-section");
+sections.forEach((section) => sectionObserver.observe(section));
 
-sections.forEach((section) => {
-  sectionObserver.observe(section);
-});
-
-// section - main, contact text
-const $main_greeting = document.querySelectorAll(".main_greeting");
-const $email = document.querySelectorAll(".more a:first-child");
-// const spanElements_email = document.querySelectorAll(
-//   ".more a:first-child span:not(.row)"
-// );
+// trim and style text
 function onTrimText(strip) {
   const rows = strip.innerHTML.trim().split("<br>");
   strip.innerHTML = "";
@@ -75,7 +39,6 @@ function onTrimText(strip) {
     strip.appendChild(rowElement);
 
     const letters = row.trim().split("");
-
     letters.forEach(function (letter) {
       letter = letter === " " ? "\u00A0" : letter;
       const spanElement = document.createElement("span");
@@ -85,25 +48,24 @@ function onTrimText(strip) {
   });
 }
 
+// dancing text: email and main greeting elements
+const $main_greeting = document.querySelectorAll(".main_greeting");
+const $email = document.querySelectorAll(".more a:first-child");
 $email.forEach(onTrimText);
 $main_greeting.forEach(onTrimText);
-// spanElements_email.forEach(spanAdd);
 
+// Function to add and remove classes with a delay
 function spanAdd(span, index) {
-  setTimeout(function () {
-    span.classList.add("animate", "shineShadow");
-  }, index * 60);
-}
-function spanRemove(span, index) {
-  setTimeout(function () {
-    span.classList.remove("animate", "shineShadow");
-  }, index * 60);
+  setTimeout(() => span.classList.add("animate", "shineShadow"), index * 40);
 }
 
-// section - about img slide
+function spanRemove(span, index) {
+  setTimeout(() => span.classList.remove("animate", "shineShadow"), index * 40);
+}
+
+// section - information Image slide
 const $slide_img_wrap = document.querySelector(".slide_img_wrap");
 const $slide_img = document.querySelectorAll(".slide_img_wrap img");
-
 let totalWidth = 0;
 
 $slide_img.forEach((img) => {
@@ -111,15 +73,14 @@ $slide_img.forEach((img) => {
   totalWidth += img_width;
   let imgs = img.cloneNode(true);
   $slide_img_wrap.appendChild(imgs);
+  $slide_img_wrap.style.width = `${totalWidth}px`;
 });
-$slide_img_wrap.style.width = `${totalWidth}px`;
 
-// section - information education list
-
+// Scroll Event
 function scrollEvent() {
   const education_li = document.querySelectorAll(".education li");
   const skill_ul = document.querySelector(".skill ul");
-  const skills = skill_ul.querySelectorAll("li");
+  const skills = document.querySelectorAll(".skill ul li");
   const second_section = document.querySelector("#about");
   const $topButton = document.querySelector("#topBtn");
   const $email_ = document.querySelector(".more a:first-child");
@@ -129,7 +90,6 @@ function scrollEvent() {
   );
 
   education_li.forEach((li) => {
-    // if (li.offsetTop < window.innerHeight + scroll_Y - 200) {
     if (scroll_Y >= li.offsetTop - 300) {
       li.style.backgroundPositionX = "0%";
     } else {
@@ -139,30 +99,22 @@ function scrollEvent() {
 
   skills.forEach((skill, i) => {
     if (scroll_Y >= skill_ul.offsetTop - 450) {
-      setTimeout(() => {
-        skill.classList.add("transform-up");
-      }, i * 100);
+      setTimeout(() => skill.classList.add("transform-up"), i * 100);
     } else {
-      setTimeout(() => {
-        skill.classList.remove("transform-up");
-      }, i * 100);
+      setTimeout(() => skill.classList.remove("transform-up"), i * 100);
     }
   });
 
-  if (second_section.offsetTop < scroll_Y) {
-    $topButton.classList.add("fadeIn");
-    $topButton.style.visibility = "visible";
-  } else {
-    $topButton.classList.remove("fadeIn");
-    $topButton.style.visibility = "hidden";
-  }
+  $topButton.style.visibility =
+    second_section?.offsetTop < scroll_Y ? "visible" : "hidden";
+  $topButton.classList.toggle("fadeIn", second_section?.offsetTop < scroll_Y);
 
-  if (scroll_Y >= $email_.offsetTop - 500) {
-    spanElements_email.forEach(spanAdd);
-  } else {
-    spanElements_email.forEach(spanRemove);
-  }
+  spanElements_email.forEach((span, index) => {
+    const action = scroll_Y >= $email_?.offsetTop - 500 ? spanAdd : spanRemove;
+    setTimeout(() => action(span, index), index * 60);
+  });
 }
+
 window.addEventListener("scroll", scrollEvent);
 window.addEventListener("resize", scrollEvent);
 window.addEventListener("orientationchange", scrollEvent);

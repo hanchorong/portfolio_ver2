@@ -14,3 +14,18 @@ const $topButton = document.querySelector("#topBtn");
 $topButton.onclick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+// textarea height
+const $textarea = document.querySelectorAll("textarea");
+
+if ($textarea) {
+  $textarea.forEach(function (text) {
+    text.style.height = "auto";
+    text.style.height = text.scrollHeight + "px";
+
+    window.addEventListener("resize", function () {
+      text.style.height = "auto";
+      text.style.height = text.scrollHeight + "px";
+    });
+  });
+}

@@ -31,6 +31,17 @@ section {
   background-color: #222;
   padding: 10rem 0;
 }
+footer {
+  width: 100%;
+  height: 8rem;
+  line-height: 8rem;
+  div {
+    color: #fff;
+    font-family: $en-font;
+    font-weight: 100;
+    text-align: center;
+  }
+}
 
 /* common class */
 #wrap .m-con {
@@ -52,7 +63,32 @@ section {
 .animated-section.in-view {
   @include animation(fadeIn, 0.7s, ease-in, 0.5s);
 }
-
+.slide-in {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    to top,
+    #22222235,
+    #36475b40,
+    #18779240,
+    #00aab340,
+    #00ddb345
+  );
+  transform-origin: top;
+  animation: scaleY 1s 0s cubic-bezier(0.65, 0.02, 0.23, 1);
+}
+@keyframes scaleY {
+  0% {
+    transform: scaleY(1) translateZ(0);
+  }
+  100% {
+    transform: scaleY(0) translateZ(0);
+  }
+}
 /* content */
 #wrap {
   max-width: 1920px;
@@ -182,6 +218,17 @@ button#topBtn {
 }
 .fadeIn {
   @include animation(fadeIn, 0.7s, ease-in, 0.5s);
+}
+.slideSide {
+  @include animation(slideSide, 0.7s, ease-in, 0.2s);
+}
+@keyframes slideSide {
+  0% {
+    transform: translateX(-3rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 1150px) {

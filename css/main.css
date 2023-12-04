@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -46,26 +47,6 @@
   animation: slideSide 0.7s ease-in 0.2s forwards;
 }
 
-.slide-in {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(to top, rgba(34, 34, 34, 0.2078431373), rgba(54, 71, 91, 0.2509803922), rgba(24, 119, 146, 0.2509803922), rgba(0, 170, 179, 0.2509803922), rgba(0, 221, 179, 0.2705882353));
-  transform-origin: top;
-  animation: scaleY 1s 0s cubic-bezier(0.65, 0.02, 0.23, 1);
-}
-
-@keyframes scaleY {
-  0% {
-    transform: scaleY(1) translateZ(0);
-  }
-  100% {
-    transform: scaleY(0) translateZ(0);
-  }
-}
 #main {
   position: relative;
 }
@@ -284,6 +265,10 @@
 #project .project_list a div {
   transition: 0.3s ease-in;
 }
+#project .project_list a:hover div {
+  text-indent: 1.5rem;
+  transition: 0.3s ease-in;
+}
 #project .project_list a:hover li {
   opacity: 0;
   transition: 0.3s ease-in;
@@ -291,9 +276,18 @@
 #project .project_list a:hover li:nth-child(4) {
   opacity: 1;
 }
-#project .project_list a:hover div {
-  text-indent: 1.5rem;
-  transition: 0.3s ease-in;
+#project .project_list a:hover li:nth-child(4)::after {
+  content: "Click 상세보기";
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6666666667);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  transition: opacity 0.5s ease;
+  animation: fadeIn 0.5s ease 0.8s forwards;
 }
 #project .project_list a ul {
   font-size: 1.6rem;
@@ -427,17 +421,6 @@
   background-color: rgba(0, 221, 181, 0.7333333333);
   color: #222;
 }
-#contact footer {
-  width: 100%;
-  height: 8rem;
-  line-height: 8rem;
-}
-#contact footer div {
-  color: #fff;
-  font-family: "Montserrat";
-  font-weight: 100;
-  text-align: center;
-}
 
 /* keyframes */
 @keyframes slideSide {
@@ -469,6 +452,12 @@
 @media (max-width: 480px) {
   #main .main_greeting {
     font-size: 5.5rem;
+  }
+  #main .main_greeting .shineShadow {
+    animation: none;
+  }
+  #about .about_wrap article p {
+    line-height: 3.25rem;
   }
   #project .project_list a div {
     font-size: 2.8rem;
