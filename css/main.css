@@ -265,6 +265,9 @@
 #project .project_list a div {
   transition: 0.3s ease-in;
 }
+#project .project_list a:hover {
+  cursor: zoom-in;
+}
 #project .project_list a:hover div {
   text-indent: 1.5rem;
   transition: 0.3s ease-in;
@@ -346,6 +349,8 @@
   font-family: "Montserrat";
 }
 #contact .contact_wrap .more a:nth-child(1) {
+  width: -moz-fit-content;
+  width: fit-content;
   font-weight: 500;
   font-size: 5rem;
   color: #00ddb3;
@@ -434,14 +439,6 @@
 @keyframes slideImg {
   100% {
     transform: translateX(-100%);
-  }
-}
-@keyframes transform-up {
-  0% {
-    transform: translateY(-1rem);
-  }
-  100% {
-    transform: translateY(0);
   }
 }
 @media (max-width: 768px) {

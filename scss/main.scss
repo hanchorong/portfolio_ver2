@@ -188,6 +188,7 @@
         transition: 0.3s ease-in;
       }
       &:hover {
+        cursor: zoom-in;
         div {
           text-indent: 1.5rem;
           transition: 0.3s ease-in;
@@ -268,6 +269,7 @@
     .more {
       font-family: $en-font;
       a:nth-child(1) {
+        width: fit-content;
         font-weight: 500;
         font-size: 5rem;
         color: $point-color;
@@ -318,15 +320,6 @@
 @keyframes slideImg {
   100% {
     transform: translateX(-100%);
-  }
-}
-
-@keyframes transform-up {
-  0% {
-    transform: translateY(-1rem);
-  }
-  100% {
-    transform: translateY(0);
   }
 }
 

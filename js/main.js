@@ -82,13 +82,13 @@ function scrollEvent() {
   const skill_ul = document.querySelector(".skill ul");
   const skills = document.querySelectorAll(".skill ul li");
   const second_section = document.querySelector("#about");
+  const prj_second_section = document.querySelector(".prj_role");
   const $topButton = document.querySelector("#topBtn");
   const $email_ = document.querySelector(".more a:first-child");
   const scroll_Y = window.scrollY;
   const spanElements_email = document.querySelectorAll(
     ".more a:first-child span:not(.row)"
   );
-
   education_li.forEach((li) => {
     if (scroll_Y >= li.offsetTop - 300) {
       li.style.backgroundPositionX = "0%";
@@ -106,8 +106,13 @@ function scrollEvent() {
   });
 
   $topButton.style.visibility =
-    second_section?.offsetTop < scroll_Y ? "visible" : "hidden";
-  $topButton.classList.toggle("fadeIn", second_section?.offsetTop < scroll_Y);
+    second_section?.offsetTop || prj_second_section?.offsetTop < scroll_Y
+      ? "visible"
+      : "hidden";
+  $topButton.classList.toggle(
+    "fadeIn",
+    second_section?.offsetTop || prj_second_section?.offsetTop < scroll_Y
+  );
 
   spanElements_email.forEach((span, index) => {
     const action = scroll_Y >= $email_?.offsetTop - 500 ? spanAdd : spanRemove;

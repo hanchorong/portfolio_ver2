@@ -169,10 +169,6 @@ header {
           transform: rotate(90deg);
         }
       }
-      // .hovered {
-      //   /* Your hover styles here */
-      //   transform: rotate(90deg);
-      // }
       ul {
         display: flex;
         visibility: hidden;
@@ -222,6 +218,8 @@ button#topBtn {
 .slideSide {
   @include animation(slideSide, 0.7s, ease-in, 0.2s);
 }
+
+// keyframes
 @keyframes slideSide {
   0% {
     transform: translateX(-3rem);
@@ -230,23 +228,17 @@ button#topBtn {
     transform: translateX(0);
   }
 }
+@keyframes transform-up {
+  0% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
+// media query
 @media (max-width: 1150px) {
-  // html {
-  //   font-size: 59%;
-  // }
-
-  // #wrap .pc-con {
-  //   display: none;
-  // }
-  // #wrap .m-con {
-  //   display: block;
-  // }
-  // .header {
-  //   .logo a {
-  //     transform: translateX(-11%);
-  //   }
-  // }
 }
 @media (min-width: 768px) {
   html {
@@ -276,35 +268,6 @@ button#topBtn {
       }
     }
   }
-
-  // .header__text {
-  //   display: none;
-  // }
-  // .header {
-  //   .logo {
-  //     a {
-  //       width: 10.5rem;
-  //       height: 10.5rem;
-  //       &:hover {
-  //         background-image: url("/img/logo.png");
-  //       }
-  //     }
-  //   }
-  //   .header__btn-gnb {
-  //     &:hover {
-  //       transform: rotate(0);
-  //       .header__gnb-line:nth-child(2) {
-  //         height: 26px;
-  //       }
-  //     }
-  //   }
-  // }
-  // .nav {
-  //   .nav-list__depth1 a {
-  //     font-size: 4.5rem;
-  //     margin-bottom: 2.5rem;
-  //   }
-  // }
 }
 @media (max-width: 480px) {
   html {

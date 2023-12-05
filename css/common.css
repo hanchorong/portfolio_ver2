@@ -236,6 +236,14 @@ button#topBtn:hover i {
     transform: translateX(0);
   }
 }
+@keyframes transform-up {
+  0% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 @media (min-width: 768px) {
   html {
     font-size: 59%;
