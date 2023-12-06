@@ -210,8 +210,7 @@ section.prj_detail .detail ul li p {
 }
 section.prj_detail .detail ul li img {
   width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: auto;
 }
 
 @media (max-width: 768px) {

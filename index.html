@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <script src="./js/common.js" defer></script>
     <script src="./js/main.js" defer></script>
+
     <!-- dotlottie -->
     <script
       src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
@@ -63,7 +64,7 @@
         </div>
       </header>
 
-      <section id="main" class="animated-section">
+      <section id="main" class="animated-section landing-page-section">
         <div class="main_greeting">Publisher<br />Portfolio</div>
 
         <div class="scrollDown">
@@ -78,7 +79,10 @@
         </div>
       </section>
 
-      <section id="about" class="animated-section">
+      <section
+        id="about"
+        class="animated-section second_section landing-page-section"
+      >
         <div class="slide_view">
           <div class="slide_img_wrap">
             <img src="./img/mbtingi_thumb.png" />
@@ -115,7 +119,7 @@
         </div>
       </section>
 
-      <section id="information" class="animated-section">
+      <section id="information" class="animated-section landing-page-section">
         <div class="info_wrap">
           <div class="title">Information</div>
           <div class="edu">
@@ -157,7 +161,7 @@
         </div>
       </section>
 
-      <section id="project" class="animated-section">
+      <section id="project" class="animated-section landing-page-section">
         <div class="title">PROJECT</div>
 
         <div class="project_list">
@@ -248,7 +252,7 @@
         </div>
       </section>
 
-      <section id="contact" class="animated-section">
+      <section id="contact" class="animated-section landing-page-section">
         <div class="contact_wrap">
           <div class="title">contact</div>
           <article>
@@ -273,6 +277,31 @@
       <button id="topBtn"><i class="fa-solid fa-angles-up fa-fade"></i></button>
       <!-- 첫시작 -->
       <div class="slide-in" style="transform: scaleY(0) translateZ(0px)"></div>
+
+      <div id="side_nav">
+        <ul>
+          <li>
+            <a href="#main"></a>
+            <div>Main</div>
+          </li>
+          <li>
+            <a href="#about"></a>
+            <div>About</div>
+          </li>
+          <li>
+            <a href="#information"></a>
+            <div>Information</div>
+          </li>
+          <li>
+            <a href="#project"></a>
+            <div>Project</div>
+          </li>
+          <li>
+            <a href="#contact"></a>
+            <div>Contact</div>
+          </li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>

@@ -122,8 +122,7 @@ header {
       &:hover {
         a {
           color: $point-color;
-          text-shadow: 0px 1px 2px $point-color;
-
+          @include pointFilter;
           span {
             &:first-child {
               color: #fff;
@@ -149,7 +148,7 @@ header {
         &:hover {
           a {
             color: $point-color;
-            text-shadow: 0px 1px 2px $point-color;
+            @include pointFilter;
           }
         }
       }
@@ -213,7 +212,7 @@ button#topBtn {
   }
 }
 .fadeIn {
-  @include animation(fadeIn, 0.7s, ease-in, 0.5s);
+  @include animation(fadeIn, 0.5s, ease-in, 0.5s);
 }
 .slideSide {
   @include animation(slideSide, 0.7s, ease-in, 0.2s);

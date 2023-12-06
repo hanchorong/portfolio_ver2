@@ -1,4 +1,4 @@
-// section animation
+// sections animation
 const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     const titles = entry.target.querySelectorAll(".title");
@@ -54,16 +54,30 @@ const $email = document.querySelectorAll(".more a:first-child");
 $email.forEach(onTrimText);
 $main_greeting.forEach(onTrimText);
 
-// Function to add and remove classes with a delay
+function isSafari() {
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+// trim된 text에 add animate
 function spanAdd(span, index) {
-  setTimeout(() => span.classList.add("animate", "shineShadow"), index * 40);
+  if (isSafari()) {
+    setTimeout(() => span.classList.add("animate"), index * 40);
+  } else {
+    setTimeout(() => span.classList.add("animate", "shineShadow"), index * 40);
+  }
 }
 
 function spanRemove(span, index) {
-  setTimeout(() => span.classList.remove("animate", "shineShadow"), index * 40);
+  if (isSafari()) {
+    setTimeout(() => span.classList.remove("animate"), index * 40);
+  } else {
+    setTimeout(
+      () => span.classList.remove("animate", "shineShadow"),
+      index * 40
+    );
+  }
 }
 
-// section - information Image slide
+// section - information : background Image slide
 const $slide_img_wrap = document.querySelector(".slide_img_wrap");
 const $slide_img = document.querySelectorAll(".slide_img_wrap img");
 let totalWidth = 0;
@@ -76,19 +90,38 @@ $slide_img.forEach((img) => {
   $slide_img_wrap.style.width = `${totalWidth}px`;
 });
 
+// sub_nav 작동을 위한 현재 section id값 확인
+const sub_nav_a = document.querySelectorAll("#side_nav a");
+
+function getCurrentSectionId() {
+  let currentSectionId = null;
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.offsetHeight;
+
+    if (window.scrollY >= sectionTop - 60 && window.scrollY < sectionBottom) {
+      currentSectionId = section.id;
+    }
+  });
+
+  return currentSectionId;
+}
+
 // Scroll Event
 function scrollEvent() {
+  const scroll_Y = window.scrollY;
   const education_li = document.querySelectorAll(".education li");
   const skill_ul = document.querySelector(".skill ul");
   const skills = document.querySelectorAll(".skill ul li");
-  const second_section = document.querySelector("#about");
-  const prj_second_section = document.querySelector(".prj_role");
+  const second_section = document.querySelector(".second_section");
   const $topButton = document.querySelector("#topBtn");
   const $email_ = document.querySelector(".more a:first-child");
-  const scroll_Y = window.scrollY;
   const spanElements_email = document.querySelectorAll(
     ".more a:first-child span:not(.row)"
   );
+
+  // section - information : education list
   education_li.forEach((li) => {
     if (scroll_Y >= li.offsetTop - 300) {
       li.style.backgroundPositionX = "0%";
@@ -97,6 +130,7 @@ function scrollEvent() {
     }
   });
 
+  // section - information : skills
   skills.forEach((skill, i) => {
     if (scroll_Y >= skill_ul.offsetTop - 450) {
       setTimeout(() => skill.classList.add("transform-up"), i * 100);
@@ -105,20 +139,41 @@ function scrollEvent() {
     }
   });
 
-  $topButton.style.visibility =
-    second_section?.offsetTop || prj_second_section?.offsetTop < scroll_Y
-      ? "visible"
-      : "hidden";
-  $topButton.classList.toggle(
-    "fadeIn",
-    second_section?.offsetTop || prj_second_section?.offsetTop < scroll_Y
-  );
-
+  // section - contact : email
   spanElements_email.forEach((span, index) => {
     const action = scroll_Y >= $email_?.offsetTop - 500 ? spanAdd : spanRemove;
     setTimeout(() => action(span, index), index * 60);
   });
+
+  //최상단 이동버튼 두번쨰 section부터 보이게
+  $topButton.style.visibility =
+    second_section?.offsetTop < scroll_Y ? "visible" : "hidden";
+  $topButton.classList.toggle("fadeIn", second_section?.offsetTop < scroll_Y);
+
+  // sub_nav : scroll 이동 될 때 마다 section 위치 확인 -> active
+  const scrollSection = getCurrentSectionId();
+  sub_nav_a.forEach((a) => {
+    const href = a.hash;
+
+    console.log(scrollSection, href);
+    if (`#${scrollSection}` === href) {
+      a.classList.add("active");
+    } else {
+      a.classList.remove("active");
+    }
+  });
 }
+// sub_nav : 현재 section 위치 확인 -> active
+const currentSectionId = getCurrentSectionId();
+sub_nav_a.forEach((a) => {
+  const href = a.hash;
+  console.log(`#${currentSectionId}`, href);
+  if (`#${currentSectionId}` === href) {
+    a.classList.add("active");
+  } else {
+    a.classList.remove("active");
+  }
+});
 
 window.addEventListener("scroll", scrollEvent);
 window.addEventListener("resize", scrollEvent);

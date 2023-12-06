@@ -54,6 +54,10 @@
   font-weight: $fw;
   color: $point-color;
 }
+@mixin pointFilter {
+  filter: drop-shadow(0 0 2px rgba(0, 221, 179, 0.5))
+    drop-shadow(0 0 5px rgba(0, 221, 179, 0.6));
+}
 @mixin btn($fz, $fw) {
   border: 1px solid rgba(10, 205, 206, 0.25);
   border-radius: 10rem;
@@ -109,6 +113,8 @@
     position: relative;
     z-index: 1;
     letter-spacing: -0.03em;
+    will-change: filter;
+
     &:before {
       content: "";
       position: absolute;
@@ -119,6 +125,7 @@
       height: 100%;
       transform: translateY(-40%);
       transition: transform 0.5s ease-in cubic-bezier(0.65, 0.02, 0.23, 1);
+      // transition: transform 0.5s ease-in;
     }
     &.row {
       overflow: hidden;
