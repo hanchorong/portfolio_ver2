@@ -155,7 +155,6 @@ function scrollEvent() {
   sub_nav_a.forEach((a) => {
     const href = a.hash;
 
-    console.log(scrollSection, href);
     if (`#${scrollSection}` === href) {
       a.classList.add("active");
     } else {
@@ -167,7 +166,6 @@ function scrollEvent() {
 const currentSectionId = getCurrentSectionId();
 sub_nav_a.forEach((a) => {
   const href = a.hash;
-  console.log(`#${currentSectionId}`, href);
   if (`#${currentSectionId}` === href) {
     a.classList.add("active");
   } else {

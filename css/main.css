@@ -524,15 +524,28 @@
   #side_nav {
     transform: translateY(-10%);
   }
+  #side_nav ul li {
+    height: 30px;
+  }
+  #side_nav ul li a {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+  #side_nav ul li a.active {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #00ddb3;
+    filter: drop-shadow(0 0 2px rgba(0, 221, 179, 0.5)) drop-shadow(0 0 5px rgba(0, 221, 179, 0.6));
+  }
   #side_nav ul li:hover a {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.8rem;
+    height: 0.8rem;
     background-color: #ccc;
     filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
   }
   #side_nav ul li:hover a.active {
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 1.2rem;
+    height: 1.2rem;
     background-color: #00ddb3;
     filter: drop-shadow(0 0 2px rgba(0, 221, 179, 0.5)) drop-shadow(0 0 5px rgba(0, 221, 179, 0.6));
   }

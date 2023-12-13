@@ -411,23 +411,35 @@
   }
   #side_nav {
     transform: translateY(-10%);
-
-    ul li:hover {
+    ul li {
+      height: 30px;
       a {
-        width: 0.5rem;
-        height: 0.5rem;
-        background-color: #ccc;
-        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6))
-          drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+        width: 0.8rem;
+        height: 0.8rem;
         &.active {
-          width: 0.9rem;
-          height: 0.9rem;
+          width: 1.2rem;
+          height: 1.2rem;
           background-color: $point-color;
           @include pointFilter;
         }
       }
-      div {
-        display: none;
+      &:hover {
+        a {
+          width: 0.8rem;
+          height: 0.8rem;
+          background-color: #ccc;
+          filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6))
+            drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+          &.active {
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: $point-color;
+            @include pointFilter;
+          }
+        }
+        div {
+          display: none;
+        }
       }
     }
   }
