@@ -162,6 +162,7 @@ function scrollEvent() {
     }
   });
 }
+
 // sub_nav : 현재 section 위치 확인 -> active
 const currentSectionId = getCurrentSectionId();
 sub_nav_a.forEach((a) => {
