@@ -208,6 +208,9 @@ section.prj_detail .detail ul li {
 section.prj_detail .detail ul li p {
   margin-bottom: 1rem;
 }
+section.prj_detail .detail ul li p a {
+  color: #fff;
+}
 section.prj_detail .detail ul li img {
   width: 100%;
   height: auto;
