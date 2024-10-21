@@ -498,6 +498,17 @@
   }
 }
 @media (max-width: 768px) {
+  #project .project_list a div {
+    font-size: 1.8rem;
+    width: 30%;
+  }
+  #project .project_list a ul {
+    width: 67%;
+  }
+  #project .project_list a ul li:nth-of-type(3) {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
   #contact .contact_wrap .more a:nth-child(1) {
     font-size: 4.5rem;
   }
@@ -508,9 +519,6 @@
   }
   #about .about_wrap article p {
     line-height: 3.25rem;
-  }
-  #project .project_list a div {
-    font-size: 2.8rem;
   }
   #contact .contact_wrap .more {
     padding-top: 10vh;
@@ -552,4 +560,4 @@
   #side_nav ul li:hover div {
     display: none;
   }
-}/*# sourceMappingURL=main.css.map */
+}
