@@ -176,13 +176,13 @@
 
         <div class="tab-menu">
           <ul>
-            <li class="active">WORK</li>
+            <li class="active" data-target="work">WORK</li>
             <li>PROJECT</li>
           </ul>
         </div>
 
         <div class="project_list">
-          <a href="./project/sociallouder.html" target="_blank">
+          <a href="./project/sociallouder.html" target="_blank" class="work">
             <div>소셜라우더</div>
             <ul>
               <li>Work</li>
@@ -200,7 +200,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/landing.html" target="_blank">
+          <a href="./project/landing.html" target="_blank" class="work">
             <div>소셜라우더 랜딩페이지</div>
             <ul>
               <li>Work</li>
@@ -212,7 +212,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/wekT.html" target="_blank">
+          <a href="./project/wekT.html" target="_blank" class="work">
             <div>WEKEEPT</div>
             <ul>
               <li>Work</li>
@@ -227,7 +227,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/fbw.html" target="_blank">
+          <a href="./project/fbw.html" target="_blank" class="work">
             <div>FBW 솔루션</div>
             <ul>
               <li>Work</li>
@@ -239,7 +239,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/mbtingi.html" target="_blank">
+          <a href="./project/mbtingi.html" target="_blank" class="project">
             <div>MBTingI</div>
             <ul>
               <li>팀프로젝트</li>
@@ -254,7 +254,11 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/portfolio_ver1.html" target="_blank">
+          <a
+            href="./project/portfolio_ver1.html"
+            target="_blank"
+            class="project"
+          >
             <div>Portfolio_ver 1</div>
             <ul>
               <li>개인프로젝트</li>
@@ -269,7 +273,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/nado.html" target="_blank">
+          <a href="./project/nado.html" target="_blank" class="project">
             <div>나도먹방</div>
             <ul>
               <li>개인프로젝트</li>
@@ -284,7 +288,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/tutor.html" target="_blank">
+          <a href="./project/tutor.html" target="_blank" class="work">
             <div>Tutoring Services</div>
             <ul>
               <li>Work</li>
@@ -299,7 +303,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/sail.html" target="_blank">
+          <a href="./project/sail.html" target="_blank" class="work">
             <div>항해 SNS</div>
             <ul>
               <li>Work</li>
@@ -311,7 +315,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/socket.html" target="_blank">
+          <a href="./project/socket.html" target="_blank" class="project">
             <div>Socket Chat</div>
             <ul>
               <li>개인프로젝트</li>
@@ -382,6 +386,13 @@
     $(function () {
       $(".tab-menu ul li").click(function () {
         $(this).addClass("active").siblings().removeClass("active");
+
+        const tabName = $(this);
+
+        // 클릭한 li의 data-target에 따라 콘텐츠 표시
+        var target = $(this).data("target");
+        $(".content > div").hide(); // 모든 콘텐츠 숨김
+        $("." + target).show(); // 해당 콘텐츠만 표시
       });
     });
   </script>

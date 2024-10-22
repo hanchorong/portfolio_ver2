@@ -300,16 +300,20 @@
   width: 100%;
   height: 100%;
 }
+#project .tab-menu {
+  max-width: 159rem;
+  width: 80%;
+  margin: 0 auto;
+  height: 55px;
+}
 #project .tab-menu ul {
   display: flex;
   align-items: center;
   justify-content: left;
-  max-width: 152rem;
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
   gap: 1.5rem;
   border-bottom: 1px solid #fff;
-  height: 40px;
+  height: 100%;
 }
 #project .tab-menu ul li {
   color: #fff;
@@ -317,7 +321,7 @@
   font-size: 2rem;
   display: inline-block;
   transition: opacity 0.5s ease;
-  padding: 1rem 1.2rem;
+  padding: 1.5rem 1.2rem;
   cursor: pointer;
   border-bottom: unset;
   width: 50%;
@@ -329,7 +333,7 @@
   border: 1px solid #fff;
   border-bottom: 2px solid #222;
   background-color: #222;
-  height: 42px;
+  height: 56px;
 }
 #project .project_list {
   max-width: 1520px;
@@ -591,4 +595,4 @@
   #side_nav ul li:hover div {
     display: none;
   }
-}
+}/*# sourceMappingURL=main.css.map */
