@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <script src="./js/common.js" defer></script>
     <script src="./js/main.js" defer></script>
-
+    <script src="./js/jquery-3.7.1.min.js"></script>
     <!-- dotlottie -->
     <script
       src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
@@ -50,7 +50,7 @@
             <ul class="pc_ul">
               <li><a href="#about">About</a></li>
               <li><a href="#information">Information</a></li>
-              <li><a href="#project">Project</a></li>
+              <li><a href="#project">Work</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mo_div toggle">
@@ -58,7 +58,7 @@
               <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#information">Information</a></li>
-                <li><a href="#project">Project</a></li>
+                <li><a href="#project">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -172,15 +172,21 @@
       </section>
 
       <section id="project" class="animated-section landing-page-section">
-        <div class="title">PROJECT</div>
+        <div class="title">WORK</div>
+
+        <div class="tab-menu">
+          <ul>
+            <li class="active">WORK</li>
+            <li>PROJECT</li>
+          </ul>
+        </div>
 
         <div class="project_list">
-          <hr />
           <a href="./project/sociallouder.html" target="_blank">
             <div>소셜라우더</div>
             <ul>
               <li>Work</li>
-              <li>작업영역: 퍼플리싱</li>
+              <li>작업영역: 퍼플리싱 100%</li>
               <li>
                 PHP / scss / jquery / swiperJS / AOS / FullCalendarJS /
                 DateRangePickerJS / ChartJS
@@ -198,7 +204,7 @@
             <div>소셜라우더 랜딩페이지</div>
             <ul>
               <li>Work</li>
-              <li>작업영역: 퍼플리싱</li>
+              <li>작업영역: 퍼플리싱 100%</li>
               <li>PHP / scss / jquery / swiperJS / AOS</li>
               <li>
                 <img src="./img/landing.png" alt="랜딩페이지 섬네일 이미지" />
@@ -210,7 +216,7 @@
             <div>WEKEEPT</div>
             <ul>
               <li>Work</li>
-              <li>작업영역: 퍼플리싱</li>
+              <li>작업영역: 퍼플리싱 60%</li>
               <li>jsp / scss / jquery / swiperJS / AOS</li>
               <li>
                 <img
@@ -225,7 +231,7 @@
             <div>FBW 솔루션</div>
             <ul>
               <li>Work</li>
-              <li>작업영역: 퍼플리싱</li>
+              <li>작업영역: 퍼플리싱 100%</li>
               <li>jsp / scss / jquery / swiperJS / AOS / ChartJS</li>
               <li>
                 <img src="./img/fbw_thumb.png" alt="fbw_thumb 섬네일 이미지" />
@@ -237,7 +243,7 @@
             <div>MBTingI</div>
             <ul>
               <li>팀프로젝트</li>
-              <li>작업영역: 프론트/퍼플리싱</li>
+              <li>작업영역: 프론트/퍼플리싱 80%</li>
               <li>ejs / css / js / jquery</li>
               <li>
                 <img
@@ -282,7 +288,7 @@
             <div>Tutoring Services</div>
             <ul>
               <li>Work</li>
-              <li>작업영역: 퍼플리싱</li>
+              <li>작업영역: 퍼플리싱 100%</li>
               <li>Typescript / css</li>
               <li>
                 <img
@@ -297,7 +303,7 @@
             <div>항해 SNS</div>
             <ul>
               <li>Work</li>
-              <li>작업영역: 퍼플리싱</li>
+              <li>작업영역: 퍼플리싱 100%</li>
               <li>React Native / StyleSheet</li>
               <li>
                 <img src="./img/sns_thumb.webp" alt=" 항해 SNS 섬네일 이미지" />
@@ -371,4 +377,12 @@
       </div>
     </div>
   </body>
+
+  <script>
+    $(function () {
+      $(".tab-menu ul li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+      });
+    });
+  </script>
 </html>

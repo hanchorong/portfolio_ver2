@@ -233,6 +233,41 @@
   opacity: 0;
   width: 100%;
   height: 100%;
+
+  .tab-menu {
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      max-width: 152rem;
+      width: 80%;
+      margin: 0 auto;
+      gap: 1.5rem;
+      border-bottom: 1px solid #fff;
+      height: 40px;
+
+      li {
+        color: #fff;
+        font-weight: 400;
+        font-size: 2rem;
+        display: inline-block;
+        transition: opacity 0.5s ease;
+        padding: 1rem 1.2rem;
+        cursor: pointer;
+        border-bottom: unset;
+        width: 50%;
+        text-align: center;
+        &.active {
+          color: #01ffcf;
+          font-weight: 500;
+          border: 1px solid #fff;
+          border-bottom: 2px solid #222;
+          background-color: #222;
+          height: 42px;
+        }
+      }
+    }
+  }
   .project_list {
     @include center($center01, 80%, 0);
     a {
