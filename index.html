@@ -182,11 +182,10 @@
         </div>
 
         <div class="project_list">
-          <a
-            href="./project/sociallouder.html"
-            target="_blank"
-            class="work active"
-          >
+          <div class="work active"></div>
+          <div class="project"></div>
+
+          <!-- <a href="./project/sociallouder.html" target="_blank">
             <div>소셜라우더</div>
             <ul>
               <li>Work</li>
@@ -204,8 +203,8 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/landing.html" target="_blank" class="work active">
-            <div>소셜라우더 랜딩페이지</div>
+          <a href="./project/landing.html" target="_blank">
+            <div>소셜라우더 마케팅 랜딩페이지</div>
             <ul>
               <li>Work</li>
               <li>작업영역: 퍼플리싱 100%</li>
@@ -216,7 +215,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/wekT.html" target="_blank" class="work active">
+          <a href="./project/wekT.html" target="_blank">
             <div>WEKEEPT</div>
             <ul>
               <li>Work</li>
@@ -231,7 +230,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/fbw.html" target="_blank" class="work active">
+          <a href="./project/fbw.html" target="_blank">
             <div>FBW 솔루션</div>
             <ul>
               <li>Work</li>
@@ -243,7 +242,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/mbtingi.html" target="_blank" class="project">
+          <a href="./project/mbtingi.html" target="_blank">
             <div>MBTingI</div>
             <ul>
               <li>팀프로젝트</li>
@@ -258,11 +257,7 @@
             </ul>
           </a>
           <hr />
-          <a
-            href="./project/portfolio_ver1.html"
-            target="_blank"
-            class="project"
-          >
+          <a href="./project/portfolio_ver1.html" target="_blank">
             <div>Portfolio_ver 1</div>
             <ul>
               <li>개인프로젝트</li>
@@ -277,7 +272,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/nado.html" target="_blank" class="project">
+          <a href="./project/nado.html" target="_blank">
             <div>나도먹방</div>
             <ul>
               <li>개인프로젝트</li>
@@ -292,7 +287,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/tutor.html" target="_blank" class="work active">
+          <a href="./project/tutor.html" target="_blank">
             <div>Tutoring Services</div>
             <ul>
               <li>Work</li>
@@ -307,7 +302,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/sail.html" target="_blank" class="work active">
+          <a href="./project/sail.html" target="_blank">
             <div>항해 SNS</div>
             <ul>
               <li>Work</li>
@@ -319,7 +314,7 @@
             </ul>
           </a>
           <hr />
-          <a href="./project/socket.html" target="_blank" class="project">
+          <a href="./project/socket.html" target="_blank">
             <div>Socket Chat</div>
             <ul>
               <li>개인프로젝트</li>
@@ -329,7 +324,7 @@
                 <img src="./img/chat.png" alt="소켓 채팅 섬네일 이미지" />
               </li>
             </ul>
-          </a>
+          </a> -->
         </div>
       </section>
 
@@ -388,20 +383,132 @@
 
   <script>
     $(function () {
+      // work tap menu
       $(".tab-menu ul li").click(function () {
         $(this).addClass("active").siblings().removeClass("active");
 
-        // 클릭한 li의 data-target에 따라 콘텐츠 표시
         const target = $(this).data("target");
-        const content = $(".project_list a").hasClass();
-        console.log(target, content);
-        // $(".content > div").hide();
-        $("." + target)
-          .addClass("active")
-          .siblings()
-          .removeClass("active");
+        $(".work, .project").removeClass("active");
+        $("." + target).addClass("active");
+      });
 
-        // if(target == )
+      // projects list
+      const projects = [
+        {
+          link: "./project/sociallouder.html",
+          title: "소셜라우더",
+          option: "Work",
+          work: "작업영역: 퍼플리싱 100%",
+          skill:
+            "PHP / scss / jquery / swiperJS / AOS / FullCalendarJS /DateRangePickerJS / ChartJS",
+          src: "./img/sociallouder.png",
+          alt: "소셜라우더 섬네일 이미지",
+        },
+        {
+          link: "./project/landing.htm",
+          title: "소셜라우더 마케팅 랜딩페이지",
+          option: "Work",
+          work: "작업영역: 퍼플리싱 100%",
+          skill: "PHP / scss / jquery / swiperJS / AOS",
+          src: "./img/landing.png",
+          alt: "랜딩페이지 섬네일 이미지",
+        },
+        {
+          link: "./project/wekT.html",
+          title: "WEKEEPT",
+          option: "Work",
+          work: "작업영역: 퍼플리싱 60%",
+          skill: "jsp / scss / jquery / swiperJS / AOS",
+          src: "./img/wekeept_thumb.png",
+          alt: "wekeepT 섬네일 이미지",
+        },
+        {
+          link: "./project/fbw.html",
+          title: "FBW 솔루션",
+          option: "Work",
+          work: "작업영역: 퍼플리싱 100%",
+          skill: "jsp / scss / jquery / swiperJS / AOS / ChartJS",
+          src: "./img/fbw_thumb.png",
+          alt: "fbw 섬네일 이미지",
+        },
+        {
+          link: "./project/mbtingi.html",
+          title: "MBTingI",
+          option: "Project",
+          work: "작업영역: 프론트/퍼플리싱 80%",
+          skill: "ejs / css / js / jquery",
+          src: "./img/mbtingi_thumb.png",
+          alt: "MBTingI 섬네일 이미지",
+        },
+        {
+          link: "./project/nado.html",
+          title: "나도먹방",
+          option: "Project",
+          work: "작업영역: 100%",
+          skill: "ejs / css / js / jquery",
+          src: "./img/nado_thumb.webp",
+          alt: "나도먹방 섬네일 이미지",
+        },
+        {
+          link: "./project/tutor.html",
+          title: "Tutoring Services",
+          option: "Work",
+          work: "작업영역: 퍼플리싱 100%",
+          skill: "Typescript / styled-components",
+          src: "./img/tutoring_thumb.webp",
+          alt: "Tutoring 섬네일 이미지",
+        },
+        {
+          link: "./project/sail.html",
+          title: "항해 SNS",
+          option: "Work",
+          work: "작업영역: 퍼플리싱 100%",
+          skill: "Typescript / StyleSheet",
+          src: "./img/sns_thumb.webp",
+          alt: "항해 섬네일 이미지",
+        },
+        {
+          link: "./project/socket.html",
+          title: "Socket Chat",
+          option: "Project",
+          work: "작업영역: 퍼플리싱 100%",
+          skill: "ejs / css / js",
+          src: "./img/chat.png",
+          alt: "Socket Chat 섬네일 이미지",
+        },
+      ];
+
+      const $workContainer = $(".work");
+      const $projectContainer = $(".project");
+
+      projects.forEach((project) => {
+        const list = `<a
+            href="${project.link}"
+            target="_blank"
+          >
+            <div>${project.title}</div>
+            <ul>
+              <li>${project.option}</li>
+              <li>${project.work}</li>
+              <li>
+                ${project.skill}
+              </li>
+              <li>
+                <img
+                  src="${project.src}"
+                  alt="${project.alt}"
+                />
+              </li>
+            </ul>
+          </a>
+          <hr />
+        `;
+
+        if (project.option === "Work") {
+          $workContainer.append(list);
+        } else {
+          $projectContainer.append(list);
+        }
       });
     });
   </script>

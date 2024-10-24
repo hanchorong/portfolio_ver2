@@ -272,6 +272,15 @@
   }
   .project_list {
     @include center($center01, 80%, 0);
+
+    .work,
+    .project {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+
     a {
       position: relative;
       color: #fff;
@@ -280,7 +289,6 @@
       font-weight: 400;
       height: 15rem;
       @include flexbox(space-between, center);
-      display: none;
       div {
         transition: 0.3s ease-in;
       }
@@ -330,10 +338,6 @@
             height: 100%;
           }
         }
-      }
-
-      &.active {
-        display: flex;
       }
     }
   }

@@ -341,6 +341,14 @@
   padding: 0 10px;
   margin: 0 auto;
 }
+#project .project_list .work,
+#project .project_list .project {
+  display: none;
+}
+#project .project_list .work.active,
+#project .project_list .project.active {
+  display: block;
+}
 #project .project_list a {
   position: relative;
   color: #fff;
@@ -351,7 +359,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  display: none;
 }
 #project .project_list a div {
   transition: 0.3s ease-in;
@@ -402,9 +409,6 @@
 }
 #project .project_list a ul li:nth-child(4) img {
   height: 100%;
-}
-#project .project_list a.active {
-  display: flex;
 }
 
 #contact {
