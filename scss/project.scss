@@ -21,6 +21,7 @@ article {
     font-family: $en-font;
     letter-spacing: 0;
   }
+
   header {
     nav.prj_nav {
       display: flex;
@@ -196,6 +197,12 @@ section.prj_detail {
         img {
           width: 100%;
           height: auto;
+        }
+
+        &.m-img {
+          img {
+            width: auto;
+          }
         }
       }
     }

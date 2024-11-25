@@ -215,6 +215,9 @@ section.prj_detail .detail ul li img {
   width: 100%;
   height: auto;
 }
+section.prj_detail .detail ul li.m-img img {
+  width: auto;
+}
 
 @media (max-width: 768px) {
   .prj_wrap header nav .pc_ul {
@@ -237,4 +240,4 @@ section.prj_detail .detail ul li img {
   section.prj_detail .detail ul li {
     width: 100%;
   }
-}
+}/*# sourceMappingURL=project.css.map */
