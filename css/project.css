@@ -187,6 +187,7 @@ section.prj_role .role textarea:focus {
 section.prj_detail {
   height: auto;
   opacity: 0;
+  padding-top: unset;
 }
 section.prj_detail .detail {
   max-width: 1520px;

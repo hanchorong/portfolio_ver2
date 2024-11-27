@@ -175,6 +175,7 @@ section.prj_role {
 section.prj_detail {
   height: auto;
   opacity: 0;
+  padding-top: unset;
   .detail {
     @include center($center01, 90%, 0);
 
